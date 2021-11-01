@@ -1,0 +1,106 @@
+class Test {      public static void main(String[] args) {
+          Person person = new Person("person"," ","one","male");
+  //create a person object
+         MilitaryPerson militaryPerson = new MilitaryPerson("person"," ","two","male",true);
+ //create a MilitaryPerson object
+         NavySailor navySailor = new NavySailor("person"," ","three","male",true,"StationOne","Submarine","captain");
+   //create a NavySailor object
+          System.out.println(person);
+ //print all objects,
+// this will internally invoke each class's toString() method
+         System.out.println(militaryPerson);
+         System.out.println(navySailor);
+     } }
+  class Person{
+      String FirstName;
+     String MiddleInitial;
+     String LastName;
+     String Gender;
+      public Person(String firstName, String middleInitial, String lastName, String gender) {
+ 
+//constructor
+         FirstName = firstName;
+         MiddleInitial = middleInitial;
+         LastName = lastName;
+         Gender = gender;
+     }
+      public String getFirstName() {
+         return FirstName;
+     }
+      public void setFirstName(String firstName) {
+         FirstName = firstName;
+     }
+
+      public String getMiddleInitial() {
+         return MiddleInitial;
+     }
+      public void setMiddleInitial(String middleInitial) {
+         MiddleInitial = middleInitial;
+     }
+
+      public String getLastName() {
+         return LastName;
+     }
+      public void setLastName(String lastName) {
+         LastName = lastName;
+     }
+      public String getGender() {
+         return Gender;
+     }
+      public void setGender(String gender) {
+         Gender = gender;
+     }
+      @Override     public String toString() {
+         return "Person{" + "FirstName='" + FirstName + '\'' +                 ", MiddleInitial='" + MiddleInitial + '\'' +                 ", LastName='" + LastName + '\'' +    ", Gender='" + Gender + '\'' +                 '}';
+         } }  
+         class MilitaryPerson extends Person
+         {   //constructor      
+         boolean activeDutyOrReserve;
+         public MilitaryPerson(String firstName, String middleInitial, String lastName, String gender, boolean activeDutyOrReserve)
+         {         
+             super(firstName, middleInitial, lastName, gender);
+             this.activeDutyOrReserve = activeDutyOrReserve;
+             }
+             public boolean isActiveDutyOrReserve() {
+                 return activeDutyOrReserve;
+                 }
+                 public void setActiveDutyOrReserve(boolean activeDutyOrReserve) {
+                     this.activeDutyOrReserve = activeDutyOrReserve;
+                     } }
+                     class NavySailor extends MilitaryPerson {
+                         //constructor
+                         String Base;
+                         String ShipType;
+                         String Rank;
+                         
+                         
+                         public NavySailor(String firstName, String middleInitial, String lastName, String gender, boolean activeDutyOrReserve, String base, String shipType, String rank) {
+         super(firstName, middleInitial, lastName, gender, activeDutyOrReserve);
+         Base = base;
+         ShipType = shipType;
+         Rank = rank;
+     }
+      public String getBase() {
+         return Base;
+     }
+      public void setBase(String base) {
+         Base = base;
+     }
+      public String getShipType() {
+         return ShipType;
+     }
+      public void setShipType(String shipType) {
+         ShipType = shipType;
+     }
+
+      public String getRank() {
+         return Rank;
+     }
+      public void setRank(String rank) {
+         Rank = rank;
+     }
+      @Override     public String toString() {
+         return "NavySailor{" +                 "Base='" + Base + '\'' +                 ", ShipType='" + ShipType + '\'' +                 " ='" + '\'' +                 ", Rank='" + Rank + '\'' +                 "} " + super.toString();     } }  class Officer extends NavySailor{     public Officer(String firstName, String middleInitial, String lastName, String gender, boolean activeDutyOrReserve, String base, String shipType, String rank) {         super(firstName, middleInitial, lastName, gender, activeDutyOrReserve, base, shipType, rank);     }      @Override     public String toString() {         return "Officer{} " + super.toString();     } }  class Enlisted extends NavySailor{      public Enlisted(String firstName, String middleInitial, String lastName, String gender, boolean activeDutyOrReserve, String base, String shipType, String rank) {         super(firstName, middleInitial, lastName, gender, activeDutyOrReserve, base, shipType, rank);
+     }
+      @Override     public String toString() {         return "Enlisted{} " + super.toString();
+     } }
